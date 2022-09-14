@@ -4,12 +4,30 @@ const { Router } = require('express');
 
 
 const router = Router();
+const axios = require ('axios');
+const { DatabaseError } = require('pg');
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/Pokemon')
+const getApiInfo = async () =>{
+    const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
+    let urls = apiUrl.data.results.map(current => current.url )
+    let pkm = [];
+    for(let i=0 ; i<urls.length ; i++){
+        let ax = await axios.get(urls[i]);
+        pkm.push(ax)
+    }
+    // const apiInfo = await apiUrl.data.results.map(element =>{
+    //     return {
+    //         url:element.url,
+    //     };
+    // });
+    // return apiInfo;
 
+}
+
+getApiInfo()
+getPkmInfo()
+ 
 module.exports = router;
 
-// Comentario para mostrar 
-// comentario para guardar
