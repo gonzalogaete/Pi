@@ -1,13 +1,7 @@
-const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
 const router = Router();
 const axios = require ('axios');
-const { DatabaseError } = require('pg');
 const { Pokemon, Tipo } = require('../db.js')
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+
 
 const getApiInfo = async () =>{
     const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
@@ -51,23 +45,4 @@ const getAllpkms = async () => {
     return infoTotal
 }
 
-router.get('/pokemons', async (req,res)=> {
-    const {name} = req.query;
-    let total = await getAllpkms()
-    if(name){
-        let pokeName = total.filter(el => el.nombre.toLowerCase().includes(name.toLowerCase()))
-        console.log(pokeName)
-        if(pokeName.length){
-            return res.status(200).send(pokeName)
-        }else{
-            return res.status(404).send('No se encontro el perro')
-        } 
-    } 
-    return res.status(200).send(total) 
-})
-
-
-router.get('/pokemons:{id}')
-
-module.exports = router
-
+module.exports = {getApiInfo, getDbInfo, getAllpkms}
