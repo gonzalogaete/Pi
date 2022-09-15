@@ -1,13 +1,7 @@
 const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
 const router = Router();
 const axios = require ('axios');
-const { DatabaseError } = require('pg');
-const { Pokemon, Tipo } = require('../db.js')
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+const { Pokemon, Type } = require('../db.js');
 
 const getApiInfo = async () =>{
     const apiUrl = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
@@ -35,7 +29,7 @@ const getApiInfo = async () =>{
 const getDbInfo = async () => {
     return await Pokemon.findAll({
         include:{
-            model: Tipo,
+            model: Type,
             attributes: ['name'],
             through: {
                 attributes: [],
@@ -51,6 +45,28 @@ const getAllpkms = async () => {
     return infoTotal
 }
 
+const pkmid = async (id) =>{
+    const pokemones = await getAllpkms();
+    for(let i=0; i< pokemones.length ; i++){
+        if(id == pokemones[i].id){
+            return pokemones[i];
+        }
+    }
+    return 0
+}
+
+const getTypes = async () =>{
+    const apiTypos = await axios.get('https://pokeapi.co/api/v2/type')
+    let tiposurl = apiTypos.data.results.map(current => current.url)
+    let tiposPkm= []
+    for(let i=0; i<tiposurl.length; i++){
+        let ax = await axios.get(tiposurl[i]);
+        let obj = {tipos: ax.data.name}
+        tiposPkm.push(obj)
+    }
+    return tiposPkm
+}
+
 router.get(`/pokemons`, async (req,res)=> {
     const {name} = req.query;
     let total = await getAllpkms()
@@ -60,30 +76,52 @@ router.get(`/pokemons`, async (req,res)=> {
         if(pokeName.length){
             return res.status(200).send(pokeName)
         }else{
-            return res.status(404).send('No se encontro el perro')
+            return res.status(404).send('No se encontro el pokemon')
         } 
     } 
     return res.status(200).send(total) 
 })
 
-const pkmid = async (id) =>{
-    const pokemones = await getAllpkms();
-    for(let i=0; i< pokemones.length ; i++){
-        if(id === pokemones[i].id){
-            return pokemones[i];
-        }
-    }
-    return 'El Pokemon no existe.'
-}
+router.get("/types", async (req, res) => {
+    const {name} = req.query;
+    let total = await getTypes()
+    return res.status(200).send(total) 
+  });
 
 router.get(`/pokemons/:id`, async (req,res)=>{
-    const {id} = req.params
+    const {id} = req.params;
     const pokeid = await pkmid(id);
-    if(typeof pkmid !== number){
-        return res(404).send(pokeid)
+    if(pokeid == 0){
+        return res.status(404).send('No Existe este Pokemon')
     }else{
-        return res(201).send(pokeid)
+        return res.status(201).send(pokeid)
     }
+})
+
+router.post(`/pokemons`,async (req,res)=>{
+    let {name,vida,ataque,defensa,velocidad,altura,peso,img,tipos} = req.body;
+    if(!name) return res.status(404).send('Es necesario un nombre')
+    if (name){
+        if (!vida) vida = 1;
+        if (!ataque) ataque = 1;
+        if (!defensa) defensa = 1;
+        if (!velocidad) velocidad = 1;
+        if (!altura) altura = 1;
+        if (!peso) peso = 1;
+        // if (!tipos.length) tipos = ["unknown"];
+
+        const createpkm = await Pokemon.create({
+            name,
+            vida,
+            ataque,
+            defensa,
+            velocidad,
+            altura,
+            peso,
+        })
+        return res.status(201).send('Pokemon Creado')
+    }
+    
 })
 
 
