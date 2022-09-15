@@ -51,7 +51,7 @@ const getAllpkms = async () => {
     return infoTotal
 }
 
-router.get('/pokemons', async (req,res)=> {
+router.get(`/pokemons`, async (req,res)=> {
     const {name} = req.query;
     let total = await getAllpkms()
     if(name){
@@ -66,8 +66,25 @@ router.get('/pokemons', async (req,res)=> {
     return res.status(200).send(total) 
 })
 
+const pkmid = async (id) =>{
+    const pokemones = await getAllpkms();
+    for(let i=0; i< pokemones.length ; i++){
+        if(id === pokemones[i].id){
+            return pokemones[i];
+        }
+    }
+    return 'El Pokemon no existe.'
+}
 
-router.get('/pokemons:{id}')
+router.get(`/pokemons/:id`, async (req,res)=>{
+    const {id} = req.params
+    const pokeid = await pkmid(id);
+    if(typeof pkmid !== number){
+        return res(404).send(pokeid)
+    }else{
+        return res(201).send(pokeid)
+    }
+})
+
 
 module.exports = router
-
