@@ -45,13 +45,3 @@ module.exports = (sequelize) => {
     },
   });
 };
-
-// Pokemon.hasMany(Tipo,{
-//   foreignKey: 'Pokemonid',
-//   sourceKey: 'id',
-// })
-
-// Tipo.belongsTo(Pokemon,{
-//   foreignKey: 'Pokemonid',
-//   targetId: 'id',
-// })

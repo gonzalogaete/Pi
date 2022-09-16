@@ -55,16 +55,15 @@ const pkmid = async (id) =>{
     return 0
 }
 
-const getTypes = async () =>{
-    const apiTypos = await axios.get('https://pokeapi.co/api/v2/type')
-    let tiposurl = apiTypos.data.results.map(current => current.url)
-    let tiposPkm= []
-    for(let i=0; i<tiposurl.length; i++){
-        let ax = await axios.get(tiposurl[i]);
-        let obj = {tipos: ax.data.name}
-        tiposPkm.push(obj)
+const Typedb = async () => {
+    const apiType = await axios.get('https://pokeapi.co/api/v2/type')
+    for(let i=0; i < apiType.data.results.length; i++){
+        Type.findOrCreate({
+            where: {
+                name: apiType.data.results[i].name
+            }
+        })
     }
-    return tiposPkm
 }
 
 router.get(`/pokemons`, async (req,res)=> {
@@ -72,7 +71,6 @@ router.get(`/pokemons`, async (req,res)=> {
     let total = await getAllpkms()
     if(name){
         let pokeName = total.filter(el => el.nombre.toLowerCase().includes(name.toLowerCase()))
-        console.log(pokeName)
         if(pokeName.length){
             return res.status(200).send(pokeName)
         }else{
@@ -83,14 +81,15 @@ router.get(`/pokemons`, async (req,res)=> {
 })
 
 router.get("/types", async (req, res) => {
-    const {name} = req.query;
-    let total = await getTypes()
-    return res.status(200).send(total) 
+    await Typedb();
+    const allTypes = await Type.findAll()
+    return res.status(200).send(allTypes)
   });
 
 router.get(`/pokemons/:id`, async (req,res)=>{
     const {id} = req.params;
     const pokeid = await pkmid(id);
+
     if(pokeid == 0){
         return res.status(404).send('No Existe este Pokemon')
     }else{
@@ -100,29 +99,17 @@ router.get(`/pokemons/:id`, async (req,res)=>{
 
 router.post(`/pokemons`,async (req,res)=>{
     let {name,vida,ataque,defensa,velocidad,altura,peso,img,tipos} = req.body;
-    if(!name) return res.status(404).send('Es necesario un nombre')
-    if (name){
-        if (!vida) vida = 1;
-        if (!ataque) ataque = 1;
-        if (!defensa) defensa = 1;
-        if (!velocidad) velocidad = 1;
-        if (!altura) altura = 1;
-        if (!peso) peso = 1;
-        // if (!tipos.length) tipos = ["unknown"];
-
-        const createpkm = await Pokemon.create({
-            name,
-            vida,
-            ataque,
-            defensa,
-            velocidad,
-            altura,
-            peso,
-        })
-        return res.status(201).send('Pokemon Creado')
-    }
-    
+    await Typedb();
+        if(!name) return res.status(404).send("Necesita Tener un nobmre");
+        if(name){
+            const createpkm = await Pokemon.create({
+                name: name.toLowerCase(),
+                vida,ataque,defensa,velocidad,altura,peso})
+            const createTypes = await Type.findAll({
+                where: { name: tipos }
+            })
+            await createpkm.addType(createTypes);
+            res.send('Pokemon Creado')
+        }
 })
-
-
 module.exports = router
