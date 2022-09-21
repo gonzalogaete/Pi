@@ -1,5 +1,5 @@
-import React from "react";
 import axios from "axios";
+
 
 export function getpokemones(){
     return async function(dispatch){
@@ -8,5 +8,12 @@ export function getpokemones(){
             type: "GET_POKEMONES",
             payload: json.data
         })
+    }
+}
+
+export function filterPokemonByAtaq(payload){
+    return{
+        type:"FILTER_BY_ATAQ",
+        payload
     }
 }
