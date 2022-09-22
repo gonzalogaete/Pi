@@ -11,9 +11,11 @@ export function getpokemones(){
     }
 }
 
-export function filterPokemonByAtaq(payload){
-    return{
-        type:"FILTER_BY_ATAQ",
+export function ordenNombres(payload){
+    return function(dispatch){
+       return dispatch({
+        type: "ORDER_NAME",
         payload
+       }) 
     }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Paginado ({PkmPerPage, allPokemones, paginado}){
+   
     const pageNumbers = []
     
     for(let i=0 ; i < Math.ceil(allPokemones/PkmPerPage);i++){
