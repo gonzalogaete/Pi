@@ -50,3 +50,17 @@ export function filtradoTipo(payload){
         })
     }
 }
+export function searchBarPokemon(payload){
+    try{
+        return async function (dispatch){
+        var json = await axios.get('http://localhost:3001/pokemons?name='+ payload)
+        return dispatch({
+            type: "GET_SEARCHBAR",
+            payload: json.data
+        })
+        }
+    }
+    catch (error){
+        console.log(error)
+    }
+}

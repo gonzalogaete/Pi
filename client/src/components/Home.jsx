@@ -4,6 +4,7 @@ import { getpokemones, ordenNombres, ordenAtaque, filtrado, filtradoTipo, getTip
 import {Link} from "react-router-dom";
 import Card from "./Card.jsx";
 import Paginado from "./Paginado";
+import SearchBar from "./SearchBar";
 
 export default function Home(){
 
@@ -59,8 +60,7 @@ export default function Home(){
             {/* <button onClick={e => {handleClick(e)}}>
                 Mostrar Pokemones
             </button> */}
-            <input placeholder="Buscar Pokemon" type='text'>
-            </input>
+            <SearchBar></SearchBar>
             <div>
                 <select onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
                     <optgroup label="Ordenamiento: por Nombre">

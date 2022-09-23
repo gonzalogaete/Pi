@@ -67,6 +67,11 @@ function rootReducer (state= initialState, action) {
                 ...state,
                 pokemones: orderat,
             }
+        case 'GET_SEARCHBAR':
+            return{
+                ...state,
+                pokemones: action.payload
+            }
         default: return state;
     }
 }
