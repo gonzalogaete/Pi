@@ -81,12 +81,12 @@ export default function Home(){
                         <option value='nocreado'>No Creado</option>
                     </optgroup>
                 </select>
-                <select> {/* Filtrado! por tipo */}
+                <select onChange={e => {filtradoTipos(e)}}> {/* Filtrado! por tipo */}
                     <optgroup label="Filtrado: tipos de pokemon">
                         <option value='all'>Todos</option>
                             {currentTipo?.map((c,i) =>{
                                 return(
-                                <option onChange={e => {filtradoTipos(e)}} key={i} value={c.name}>{c.name}
+                                <option key={i} value={c.name} > {c.name}
                                 </option>
                                 )
                             })}
