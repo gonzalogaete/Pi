@@ -4,7 +4,6 @@ const axios = require ('axios');
 const { Pokemon, Type } = require('../db.js');
 
 const getApiInfo = async () =>{
-    let pages = 0;
     const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=40`);
     let urls = apiUrl.data.results.map(current => current.url )
     let pkm = [];
@@ -21,6 +20,7 @@ const getApiInfo = async () =>{
             altura:ax.data.height,
             peso:ax.data.weight,
             img:ax.data.sprites.other["official-artwork"].front_default,
+            createInDb:false
         }
         pkm.push(obj)
     }
@@ -60,7 +60,7 @@ const Typedb = async () => {
     const apiType = await axios.get('https://pokeapi.co/api/v2/type')
     for(let i=0; i < apiType.data.results.length; i++){
         Type.findOrCreate({
-            where: {
+            where:{
                 name: apiType.data.results[i].name
             }
         })
@@ -105,7 +105,7 @@ router.post(`/pokemons`,async (req,res)=>{
         if(name){
             const createpkm = await Pokemon.create({
                 name: name.toLowerCase(),
-                vida,ataque,defensa,velocidad,altura,peso})
+                vida,ataque,defensa,velocidad,altura,peso, createInDb:true})
             const createTypes = await Type.findAll({
                 where: { name: tipos }
             })

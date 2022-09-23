@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getpokemones, ordenNombres } from "../actions";
+import { getpokemones, ordenNombres, ordenAtaque, filtrado, filtradoTipo, getTipos } from "../actions";
 import {Link} from "react-router-dom";
 import Card from "./Card.jsx";
 import Paginado from "./Paginado";
@@ -15,6 +15,7 @@ export default function Home(){
     const indexOfLastPkm = currentPage * PkmPerPage
     const indexOfFirstPkm = indexOfLastPkm - PkmPerPage
     const CurrentPkm = allPokemones.slice(indexOfFirstPkm,indexOfLastPkm)
+    const currentTipo = useSelector((state)=> state.tipos)
     
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -22,12 +23,14 @@ export default function Home(){
 
     useEffect(()=>{
         dispatch(getpokemones())
+        dispatch(getTipos())
     },[])
 
     // function handleClick(evento){
     //     evento.preventDefault();
     //     dispatch(getpokemones());
     // }
+
     function OrderName(event){
         event.preventDefault();
         dispatch(ordenNombres(event.target.value));
@@ -35,6 +38,19 @@ export default function Home(){
         setOrden(`Ordenado ${event.target.value}`)
     }
 
+    function OrderAtaq(event){
+        event.preventDefault();
+        dispatch(ordenAtaque(event.target.value));
+        setCurrentPage(1);
+        setOrden(`Ordenado ${event.target.value}`)
+    }
+
+    function filtrados(event){
+        dispatch(filtrado(event.target.value));
+    }
+    function filtradoTipos(event){
+        dispatch(filtradoTipo(event.target.value));
+    }
 
     return (
         <div>
@@ -46,18 +62,35 @@ export default function Home(){
             <input placeholder="Buscar Pokemon" type='text'>
             </input>
             <div>
-                <select placeholder="Nombre" onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
+                <select onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
+                    <optgroup label="Ordenamiento: por Nombre">
+                        <option value='asc'>Ascendente</option>
+                        <option value='desc'>Descendente</option>
+                    </optgroup>
                 </select>
-                <select placeholder="Ataque"> {/* orden por ataque*/}
-                    <option value='ascATQ'>Ascendente</option>  
-                    <option value='descATQ'>Descendente</option>
+                <select onChange={e => {OrderAtaq(e)}}> {/* orden por ataque*/}
+                    <optgroup label="Ordenamiento: por Ataque">
+                        <option value='ascATQ'>Ascendente</option>  
+                        <option value='descATQ'>Descendente</option>
+                    </optgroup>
                 </select>
-                <select> {/* Filtrado! por creado y no creado */}
-                    <option value='all'>Todos</option>
-                    <option value='creado'>Creado</option>
-                    <option value='nocreado'>No Creado</option>
+                <select onChange={e => {filtrados(e)}}> {/* Filtrado! por creado y no creado */}
+                    <optgroup label="Filtrado: Pokemon creado y no creado">
+                        <option value='all'>Todos</option>
+                        <option value='creado'>Creado</option>
+                        <option value='nocreado'>No Creado</option>
+                    </optgroup>
+                </select>
+                <select> {/* Filtrado! por tipo */}
+                    <optgroup label="Filtrado: tipos de pokemon">
+                        <option value='all'>Todos</option>
+                            {currentTipo?.map((c,i) =>{
+                                return(
+                                <option onChange={e => {filtradoTipos(e)}} key={i} value={c.name}>{c.name}
+                                </option>
+                                )
+                            })}
+                    </optgroup>
                 </select>
             </div>
             <Paginado 

@@ -1,8 +1,7 @@
-import axios from "axios";
-
 const initialState = {
     pokemones: [],
     allpokemons: [],
+    tipos:[]
 } 
 function rootReducer (state= initialState, action) {
     switch(action.type){
@@ -12,13 +11,27 @@ function rootReducer (state= initialState, action) {
                 pokemones: action.payload,
                 allpokemons: action.payload
             }
-        // case 'FILTER':
-        //     const allpokemons = state.allpokemons
-        //     const statusFiltered = action.payload === 'All' ? allpokemons :allpokemons.filter(el =>el.status === action.payload)
-        //     return{
-        //         ...state,
-        //         pokemonesFilter: statusFiltered
-        //     }
+        case 'GET_TIPOS':
+            return{
+                ...state,
+                tipos: action.payload,
+            }
+        case 'FILTRADO':
+            const allPkm = state.pokemones
+            const allpkm2 = state.pokemones
+            const statusFiltrado = action.payload === 'creado'? allPkm.filter(el => el.createInDb === true) : allpkm2.filter(el => el.createInDb === false )
+            return{
+                ...state,
+                pokemones: action.payload === 'all' ? state.allpokemons : statusFiltrado
+            }
+        
+        case 'FILTRADO_TYPE':
+            const filterpkm = state.pokemones
+            const filtrado = action.payload === 'all' ? filterpkm : filterpkm.filter(e => e.pokemones.includes(action.payload))
+            return{
+                ...state,
+                pokemones: filtrado
+            }
 
         case 'ORDER_NAME':
             let order = action.payload === 'asc'? 
@@ -35,6 +48,23 @@ function rootReducer (state= initialState, action) {
             return{
                 ...state,
                 pokemones: order,
+            }
+
+        case 'ORDER_ATAQ':
+            let orderat = action.payload === 'ascATQ'? 
+            state.pokemones.sort(function(a,b){
+                if(a.ataque > b.ataque) return 1
+                if(b.ataque > a.ataque ) return -1
+                return 0
+            }) :
+            state.pokemones.sort(function(a,b){
+                if(a.ataque > b.ataque) return -1
+                if(b.ataque > a.ataque ) return 1
+                return 0
+            })
+            return{
+                ...state,
+                pokemones: orderat,
             }
         default: return state;
     }
