@@ -110,10 +110,10 @@ __Pagina inicial__: deben armar una landing page con
 
 __Ruta principal__: debe contener
 
-- [ ] Input de búsqueda para encontrar pokemons por nombre (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el nombre completo)
+- [ ] Input de búsqueda para encontrar pokemons por name (La búsqueda será exacta, es decir solo encontrará al pokemon si se coloca el name completo)
 - [ ] Área donde se verá el listado de pokemons. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /pokemons` y deberá mostrar su:
   - Imagen
-  - Nombre
+  - name
   - Tipos (Electrico, Fuego, Agua, etc)
 - [ ] Botones/Opciones para filtrar por tipo de pokemon y por pokemon existente o creado por nosotros
 - [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los pokemons por orden alfabético y por ataque
@@ -123,7 +123,7 @@ __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los pokemons 
 
 __Ruta de detalle de Pokemon__: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, nombre y tipos)
+- [ ] Los campos mostrados en la ruta principal para cada pokemon (imagen, name y tipos)
 - [ ] Número de Pokemon (id)
 - [ ] Estadísticas (vida, ataque, defensa, velocidad)
 - [ ] Altura y peso
@@ -134,7 +134,7 @@ __Ruta de creación__: debe contener
 - [ ] Posibilidad de seleccionar/agregar más de un tipo de Pokemon
 - [ ] Botón/Opción para crear un nuevo Pokemon
 
-> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre del Pokemon no pueda contener caracteres numéricos, que la altura no pueda ser superior a determinado valor, etc.
+> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el name del Pokemon no pueda contener caracteres numéricos, que la altura no pueda ser superior a determinado valor, etc.
 
 ## Base de datos
 
@@ -142,7 +142,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
 
 - [ ] Pokemon con las siguientes propiedades:
   - ID (Número de Pokemon) * : No puede ser un ID de un pokemon ya existente en la API pokeapi
-  - Nombre *
+  - name *
   - Vida
   - Ataque
   - Defensa
@@ -151,7 +151,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Peso
 - [ ] Tipo con las siguientes propiedades:
   - ID
-  - Nombre
+  - name
 
 La relación entre ambas entidades debe ser de muchos a muchos ya que un pokemon puede pertenecer a más de un tipo y, a su vez, un tipo puede incluir a muchos pokemons.
 
@@ -171,7 +171,7 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
   - Debe traer solo los datos pedidos en la ruta de detalle de pokemon
   - Tener en cuenta que tiene que funcionar tanto para un id de un pokemon existente en pokeapi o uno creado por ustedes
 - [ ] __GET /pokemons?name="..."__:
-  - Obtener el pokemon que coincida exactamente con el nombre pasado como query parameter (Puede ser de pokeapi o creado por nosotros)
+  - Obtener el pokemon que coincida exactamente con el name pasado como query parameter (Puede ser de pokeapi o creado por nosotros)
   - Si no existe ningún pokemon mostrar un mensaje adecuado
 - [ ] __POST /pokemons__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de pokemons por body

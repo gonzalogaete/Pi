@@ -37,13 +37,13 @@ function rootReducer (state= initialState, action) {
         case 'ORDER_NAME':
             let order = action.payload === 'asc'? 
             state.pokemones.sort(function(a,b){
-                if(a.nombre > b.nombre) return 1
-                if(b.nombre > a.nombre ) return -1
+                if(a.name > b.name) return 1
+                if(b.name > a.name ) return -1
                 return 0
             }) :
             state.pokemones.sort(function(a,b){
-                if(a.nombre > b.nombre) return -1
-                if(b.nombre > a.nombre ) return 1
+                if(a.name > b.name) return -1
+                if(b.name > a.name ) return 1
                 return 0
             })
             return{
@@ -72,6 +72,9 @@ function rootReducer (state= initialState, action) {
                 ...state,
                 pokemones: action.payload
             }
+        case 'POST_POKEMON':
+            return {...state}
+
         default: return state;
     }
 }

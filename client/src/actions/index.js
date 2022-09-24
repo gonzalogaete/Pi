@@ -18,7 +18,16 @@ export function getTipos (){
         })
     }
 }
-export function ordenNombres(payload){
+
+export function PostPokemon(payload){
+    return async function (dispatch){
+        console.log(payload)
+        const respons = await axios.post("http://localhost:3001/pokemons",payload)
+        return respons
+    }
+}
+
+export function ordennames(payload){
     return function(dispatch){
        return dispatch({
         type: "ORDER_NAME",

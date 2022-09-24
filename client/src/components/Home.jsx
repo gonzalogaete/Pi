@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getpokemones, ordenNombres, ordenAtaque, filtrado, filtradoTipo, getTipos } from "../actions";
+import { getpokemones, ordennames, ordenAtaque, filtrado, filtradoTipo, getTipos } from "../actions";
 import {Link} from "react-router-dom";
 import Card from "./Card.jsx";
 import Paginado from "./Paginado";
@@ -34,7 +34,7 @@ export default function Home(){
 
     function OrderName(event){
         event.preventDefault();
-        dispatch(ordenNombres(event.target.value));
+        dispatch(ordennames(event.target.value));
         setCurrentPage(1);
         setOrden(`Ordenado ${event.target.value}`)
     }
@@ -60,10 +60,10 @@ export default function Home(){
             {/* <button onClick={e => {handleClick(e)}}>
                 Mostrar Pokemones
             </button> */}
-            <SearchBar></SearchBar>
+            <SearchBar className='searchbar'></SearchBar>
             <div>
                 <select onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
-                    <optgroup label="Ordenamiento: por Nombre">
+                    <optgroup label="Ordenamiento: por name">
                         <option value='asc'>Ascendente</option>
                         <option value='desc'>Descendente</option>
                     </optgroup>
@@ -102,7 +102,7 @@ export default function Home(){
                 return(
                     <div key={i} className='cartas'>
                         <Link to={'/home/' + c.id}>
-                            <Card name={c.nombre} image={c.img} key={c.id}/>
+                            <Card name={c.name} image={c.img? c.img : c.image} key={c.id}/>
                         </Link>
                     </div>
                 )

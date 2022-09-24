@@ -10,7 +10,7 @@ const getApiInfo = async () =>{
     for(let i=0 ; i<urls.length ; i++){
         let ax = await axios.get(urls[i]);
         let obj = {
-            nombre: ax.data.forms[0].name,
+            name: ax.data.forms[0].name,
             tipos:ax.data.types.map(e => e.type.name),
             id: ax.data.id,
             vida:ax.data.stats[0].base_stat,
@@ -71,7 +71,7 @@ router.get(`/pokemons`, async (req,res)=> {
     const {name} = req.query;
     let total = await getAllpkms()
     if(name){
-        let pokeName = total.filter(el => el.nombre.toLowerCase().includes(name.toLowerCase()))
+        let pokeName = total.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         if(pokeName.length){
             return res.status(200).send(pokeName)
         }else{
