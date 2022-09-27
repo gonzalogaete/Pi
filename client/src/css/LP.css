@@ -1,0 +1,81 @@
+.button {
+  background-color: #fff000;
+  border-radius: 60px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px ;
+  text-align: center;
+  transition: 200ms;
+  width: 30%;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 26px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+  
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
+  outline: 0;
+  background: #f4e603;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+  
+}
+
+.button:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
+
+.title{
+  padding-top: 49px;
+}
+
+.pikachu{
+  padding: 10px;
+}
+
+div.main{ 
+  background-image: url('../img/background.png');
+  opacity: 1;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* body{
+  background-color: #fdf8b7;
+  opacity: 1;
+  background-image:  linear-gradient(135deg, #363636 25%, transparent 25%), linear-gradient(225deg, #363636 25%, transparent 25%), linear-gradient(45deg, #636363 25%, transparent 25%), linear-gradient(315deg, #363636 25%, #fff894 25%);
+  background-position:  40px 0, 40px 0, 0 0, 0 0;
+  background-size: 80px 80px;
+  background-repeat: repeat;
+  } */

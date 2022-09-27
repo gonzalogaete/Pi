@@ -1,0 +1,44 @@
+div.mainso{ 
+    background-image: url('../img/background.png');
+    opacity: 1;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.paginado{
+    cursor: pointer;
+    touch-action: manipulation;
+    font-size: 26px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 0;
+}
+ul.paginado {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+ul.paginado li {display: inline;}
+
+ul.paginado li a {
+    color: rgb(255, 255, 255);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.paginado li a.active {
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+}
+
+.cartas{
+    
+}
+
+.titulo{
+    font-family: 'Times New Roman', Times, serif;
+    -webkit-text-stroke: 1.5px rgb(0, 0, 0);
+    color: rgb(255, 255, 255); 
+    font-size: 60px ;
+}

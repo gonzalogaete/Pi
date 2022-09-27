@@ -18,7 +18,7 @@ const getApiInfo = async () =>{
             defensa:ax.data.stats[2].base_stat,
             velocidad:ax.data.stats[5].base_stat,
             altura:ax.data.height,
-            peso:ax.data.weight,
+            peso:ax.data.weight/10,
             img:ax.data.sprites.other["official-artwork"].front_default,
             createInDb:false
         }

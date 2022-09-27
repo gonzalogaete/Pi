@@ -73,3 +73,19 @@ export function searchBarPokemon(payload){
         console.log(error)
     }
 }
+
+export function getDetail(id){
+    return async function(dispatch){
+        
+        try{
+            var json = await axios("http://localhost:3001/pokemons/" + id)
+            return dispatch ({
+                type:'GET_DETAILS',
+                payload: json.data
+            })
+        }catch(error){
+            return error;
+        }
+
+    }
+}

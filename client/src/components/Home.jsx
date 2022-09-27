@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Card from "./Card.jsx";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import home from '../css/home.css';
 
 export default function Home(){
 
@@ -54,11 +55,13 @@ export default function Home(){
     }
 
     return (
-        <div>
-            <Link to='/pokemones'>Crear Pokémon</Link>
-            <h1>Pokémon</h1>
+        <div className="mainso">
+            <h1 className='titulo'>PokéApiMon</h1>
+            <Link to='/pokemones'>
+                <button className="button-1">Crear Pokémon</button>
+            </Link> 
             {/* <button onClick={e => {handleClick(e)}}>
-                Mostrar Pokemones
+                Recargar Pokemons
             </button> */}
             <SearchBar className='searchbar'></SearchBar>
             <div>
@@ -93,7 +96,8 @@ export default function Home(){
                     </optgroup>
                 </select>
             </div>
-            <Paginado 
+            <Paginado
+                className='paginado'
                 PkmPerPage = {PkmPerPage}
                 allPokemones = {allPokemones.length}
                 paginado = {paginado}
