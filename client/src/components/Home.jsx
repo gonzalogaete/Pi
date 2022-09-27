@@ -106,7 +106,12 @@ export default function Home(){
                 return(
                     <div key={i} className='cartas'>
                         <Link to={'/home/' + c.id}>
-                            <Card name={c.name} image={c.img? c.img : c.image} key={c.id}/>
+                            <Card
+                             name={c.name}
+                             image={c.img? c.img : c.image} 
+                             key={c.id}
+                             tipos={c.tipos + ' '}
+                             />
                         </Link>
                     </div>
                 )

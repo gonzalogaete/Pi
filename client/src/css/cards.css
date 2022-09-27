@@ -1,0 +1,13 @@
+div.card {
+    display: flexbox;
+    height: 400px;
+    width: 400px;
+}
+
+a {
+    display:inline-block
+}
+
+div.cartas{
+    display: inline-block;
+}

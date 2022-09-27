@@ -14,7 +14,7 @@ export default function LandingPage(){
             </div>
             </div>
             <Link to='/home'>
-                <button class="button"><span>Gotcha! </span></button>
+            <button class="button-32" role="button">Gotcha!</button>
             </Link>
         </div>
     )
