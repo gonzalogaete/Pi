@@ -29,18 +29,24 @@
   cursor: not-allowed;
 }
 .title{
-  padding-top: 49px;
-}
-
-.pikachu{
   padding: 10px;
+  margin: 1%; 
+
 }
 
 div.main{ 
-  background-image: url('../img/background.png');
-  opacity: 1;
+  background-image: url('../img/ash.gif');
+  background-position: center;
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-color: rgb(250, 242, 213);
   height: 100vh;
-  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
+.botonPrincipal{ 
+  padding: 0px;
 }
 
 /* body{
