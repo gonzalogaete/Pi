@@ -23,15 +23,10 @@ export default function Home(){
         setCurrentPage(pageNumber)
     }
 
-    useEffect(()=>{
+    useEffect((e)=>{
         dispatch(getpokemones())
         dispatch(getTipos())
     },[])
-
-    // function handleClick(evento){
-    //     evento.preventDefault();
-    //     dispatch(getpokemones());
-    // }
 
     function OrderName(event){
         event.preventDefault();
@@ -60,9 +55,6 @@ export default function Home(){
             <Link to='/pokemones'>
                 <button className="button-1">Crear Pokémon</button>
             </Link> 
-            {/* <button onClick={e => {handleClick(e)}}>
-                Recargar Pokemons
-            </button> */}
             <SearchBar className='searchbar'></SearchBar>
             <div>
                 <select onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
@@ -89,7 +81,7 @@ export default function Home(){
                         <option value='all'>Todos</option>
                             {currentTipo?.map((c,i) =>{
                                 return(
-                                <option key={i} value={c.name} > {c.name}
+                                <option key={i} value={c.name}> {c.name}
                                 </option>
                                 )
                             })}
@@ -108,10 +100,9 @@ export default function Home(){
                         <Link to={'/home/' + c.id}>
                             <Card
                              name={c.name}
-                             image={c.img? c.img : c.image} 
+                             imagee={c.img ? c.img : c.imagen} 
                              key={c.id}
-                             tipos={c.tipos + ' '}
-                             />
+                             tipos={c.tipos ? c.tipos + '' : c.Types.map(e => e.name + ' ')} />
                         </Link>
                     </div>
                 )

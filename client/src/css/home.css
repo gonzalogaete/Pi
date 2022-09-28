@@ -32,10 +32,6 @@ ul.paginado li a.active {
     color: rgb(0, 0, 0);
 }
 
-.cartas{
-    
-}
-
 .titulo{
     font-family: 'Times New Roman', Times, serif;
     -webkit-text-stroke: 1.5px rgb(0, 0, 0);

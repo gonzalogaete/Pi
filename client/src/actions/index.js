@@ -21,7 +21,6 @@ export function getTipos (){
 
 export function PostPokemon(payload){
     return async function (dispatch){
-        console.log(payload)
         const respons = await axios.post("http://localhost:3001/pokemons",payload)
         return respons
     }
@@ -76,7 +75,6 @@ export function searchBarPokemon(payload){
 
 export function getDetail(id){
     return async function(dispatch){
-        
         try{
             var json = await axios("http://localhost:3001/pokemons/" + id)
             return dispatch ({

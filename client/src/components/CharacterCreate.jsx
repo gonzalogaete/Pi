@@ -7,6 +7,18 @@ export  default function PokeCreate(){
     const dispatch = useDispatch();
     const tipos = useSelector((state)=>state.tipos);
     const history = useHistory();
+    
+    const errors = useState({
+        name:'',
+        vida:'',
+        ataque:'',
+        defensa:'',
+        velocidad:'',
+        altura:'',
+        peso:'',
+        imagen:'',
+        tipos:[],
+    })
 
     const [input,setInput] = useState({
         name:'',
@@ -61,6 +73,11 @@ export  default function PokeCreate(){
           tipos: input.tipos.filter((tipos) => tipos !== e),
         });
       };
+
+      const handleErrors = (e)=>{
+
+      }
+  
 
     return(
         <div>
@@ -123,30 +140,29 @@ export  default function PokeCreate(){
                     <label>Imagen</label>
                     <input
                     type="text"
-                    value={input.img}
+                    value={input.imagen}
                     name="imagen"
-                    onChange={(e) => handleChange(e)}
-                    required
-                    />
+                    onChange={(e) => handleChange(e)}/>
                 </div>
                 <div>
                     <label>Tipos</label>
                     <select onChange={(e) => handleTipos(e)}>
                         {tipos.map((e,i) =>{
                             return(
-                                <option value={e.name} key={i}> {e.name} </option>
+                                <option value={e.name} key={i}> {e.name + ' '} 
+                                </option>
                             )})
                         }
                     </select>
-                    {/* <ul>
-                     {input.tiposDePkm.map((e, i) => {
-                        return (
-                        <li key={i} onClick={() => handleDeleteTipos(e)}>
-                         {e} X
-                        </li>
-                        );
-                        })}
-                    </ul> */}
+                    <ul>
+                    {
+                        input.tipos.map((e, i) => {
+                            return (
+                                <li key={i} onClick={() => handleDeleteTipos(e)}> {e} X </li>
+                            );
+                        })
+                    }
+                    </ul>
                 </div>
                 <button type="submit">Crear Pokemon</button>
             </form>
