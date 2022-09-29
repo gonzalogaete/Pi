@@ -1,0 +1,121 @@
+.formDiv{
+    display: inline-block;
+    background: rgb(249, 242, 219);
+    height: 100vh;
+    width: 50%;
+}
+
+.formTitulo{
+    font-size: 28px;
+    font-family: cursive;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(248, 245, 236);
+}
+
+.cajaForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.formName{
+    margin: 10px;
+    padding: 20px;
+}
+
+.formTipos{
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    border-radius: 10%;
+    
+}
+
+.primeraForm{
+    font-family: cursive;
+    font-size: 18px;
+    margin: 0px;
+    padding: 1px;
+}
+
+.inputForm{
+    border: 3px solid black;
+    font-size: 20px;
+    margin: 2px;
+    padding: 3px;
+    font-family: cursive;
+    background: rgb(249, 242, 219);
+}
+.buttonsPosition{
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+.buttontext{
+    font-size: 15px;
+    font-family: cursive;
+}
+.ButtonSubmit{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    background: white;
+    position: relative;
+    background: rgb(249, 242, 219);
+}
+
+.ButtonSubmit:hover{
+    background: rgba(198, 252, 159, 0.441);
+}
+
+.positionButton{
+    display: flex;
+    align-items: center;    
+    width: 200px;
+    height: 200px;
+}
+
+.buttonVolver{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    
+    background-color: rgb(249, 242, 219);    
+}.buttonVolver:hover{
+    background-color: rgba(178, 58, 58, 0.415);
+}
+.volverText{
+    font-family: cursive;
+    font-size: 15px;
+}
+
+
+.positionLi{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.tiposLi{
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    border: 3px solid black;
+    border-radius: 15%; 
+}
+
+.selectForm{
+    padding: 10px;
+    border: 3px solid black;
+    font-size: 18px;
+    border-radius: 10%;
+    width: 100%;
+    height: 50px;
+    background: rgb(249, 242, 219);
+}

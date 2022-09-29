@@ -43,10 +43,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: false,
     },
-    imagen: {
-      type: DataTypes.STRING,
-      defaultValue:
-        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png',
-      allowNull: false,}
+    imagen:{
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue:'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png'
+    },
   });
 };

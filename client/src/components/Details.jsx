@@ -23,7 +23,8 @@ export default function Detail (props){
                     <h4>Ataque: {myPokemon.ataque}</h4>
                     <h4>Defensa: {myPokemon.defensa}</h4>
                     <h4>Velocidad: {myPokemon.velocidad}</h4>
-                    <h4>Peso: {myPokemon.peso} Kg</h4>
+                    <h4>Altura: {myPokemon.altura / 10} Metros</h4>
+                    <h4>Peso: {myPokemon.peso} Kilogramos</h4>
                 </div>
             } 
             <Link to ='/home'>

@@ -51,14 +51,14 @@ export default function Home(){
 
     return (
         <div className="mainso">
+            <SearchBar className='searchbar'></SearchBar>
             <h1 className='titulo'>PokéApiMon</h1>
             <Link to='/pokemones'>
                 <button className="button-1">Crear Pokémon</button>
             </Link> 
-            <SearchBar className='searchbar'></SearchBar>
             <div>
                 <select onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
-                    <optgroup label="Ordenamiento: por name">
+                    <optgroup label="Ordenamiento: por nombre">
                         <option value='asc'>Ascendente</option>
                         <option value='desc'>Descendente</option>
                     </optgroup>
@@ -97,7 +97,7 @@ export default function Home(){
             {CurrentPkm?.map((c, i)=>{
                 return(
                     <div key={i} className='cartas'>
-                        <Link to={'/home/' + c.id}>
+                        <Link className="link" to={'/home/' + c.id}>
                             <Card
                              name={c.name}
                              imagee={c.img ? c.img : c.imagen} 
@@ -108,6 +108,7 @@ export default function Home(){
                 )
             })}
             
+           
         </div>
     )
 

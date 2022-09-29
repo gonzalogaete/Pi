@@ -1,9 +1,9 @@
-div.mainso{ 
+/* div.mainso{ 
     background-image: url('../img/background.png');
     opacity: 1;
     background-size: cover;
     overflow: hidden;
-}
+} */
 
 .paginado{
     cursor: pointer;
@@ -37,5 +37,14 @@ ul.paginado li a.active {
     -webkit-text-stroke: 1.5px rgb(0, 0, 0);
     color: rgb(255, 255, 255); 
     font-size: 60px ;
+    user-select: none;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.tipos{
+    background-image: url('../img/planta.png');
 }
 

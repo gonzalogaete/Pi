@@ -29,6 +29,7 @@ function rootReducer (state= initialState, action) {
             const filterpkm = state.allpokemons
             const filtrado = action.payload === 'all' ? 
             state.allpokemons : filterpkm.filter(e => e.tipos ? e.tipos.includes(action.payload) : e.Types.map(e => e.name.includes(action.payload))) 
+            
             return{
                 ...state,
                 pokemones: filtrado

@@ -1,6 +1,4 @@
 div.mainD{ 
-    background-image: url('../img/background.png');
-    opacity: 1;
     height: 100vh;
     overflow: hidden;
 }

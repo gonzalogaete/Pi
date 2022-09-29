@@ -1,13 +1,116 @@
-div.card {
-    display: flexbox;
-    height: 400px;
-    width: 400px;
+.card {
+   width: 450px;
+   height: 210px;
+   border: 10px solid#000000;
+   background-color: #FF1C1C;
+   border-radius: 15rem 15rem 0 0;
+   margin-left: -10px;
+   margin-top: -5px;
 }
 
 a {
-    display:inline-block
+    display:inline-block;
+    border-radius: 300px;
+    border-color: rgb(255, 255, 255);
 }
 
-div.cartas{
+.cartas{
     display: inline-block;
+    border-radius: 50%;
+    height: 420px;
+    width: 450px;
+    border-color: rgb(255, 255, 255);
+    background-color: #FFF;
+    margin: 20px;
+    border: 10px solid#000000;
 }
+
+.cardImg{
+    padding: 20px;
+    width: 300px;
+    height: 250px;
+}
+
+.cardName{
+    font-size: 38px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 17px;
+
+}
+.cardName a{
+    text-decoration: none;
+}
+
+.cardType{
+    margin-top: -20px;
+    padding: 10px;
+}
+
+.divType{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pokebola{
+    width: 10rem;
+    height: 10rem;
+    margin-left: 10rem;
+    background: #fff;
+    border-radius: 50%;
+}
+.pokebola::before{
+    content: '';
+    width: 10rem;
+    height: 5rem;
+    margin-left: -5rem;
+    background:#FF1C1C;
+    border-radius: 5rem 5rem 0 0;
+    position: absolute;
+}
+
+.detalle{
+    width: 10rem;
+    height: 0.5rem;
+    background: #333;
+    margin-top: 4.8rem;
+    position: absolute;
+}
+
+.detalle::before{
+    content: '';
+    width: 3rem;
+    height: 3rem;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: -1rem;
+    margin-left: -1.1rem;
+
+}
+.detalle::after{
+    content:'';
+    width:1.8rem;
+    height: 1.8rem;
+    background: #FFF;
+    border-radius: 50%;
+    margin-top: -0.5rem;
+    margin-left: -0.5rem;
+    position: absolute;
+}
+
+

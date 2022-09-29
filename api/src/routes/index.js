@@ -4,7 +4,7 @@ const axios = require ('axios');
 const { Pokemon, Type } = require('../db.js');
 
 const getApiInfo = async () =>{
-    const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+    const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=59`);
     let urls = apiUrl.data.results.map(current => current.url )
     let pkm = [];
     for(let i=0 ; i<urls.length ; i++){
@@ -99,13 +99,21 @@ router.get(`/pokemons/:id`, async (req,res)=>{
 })
 
 router.post(`/pokemons`,async (req,res)=>{
-    let {name,vida,ataque,defensa,velocidad,altura,peso,img,tipos} = req.body;
+    let {name,vida,ataque,defensa,velocidad,altura,peso,imagen,tipos} = req.body;
+
+    if(!vida) vida = 1;
+    if(!ataque) ataque = 1;
+    if(!defensa) defensa = 1;
+    if(!velocidad) velocidad = 1;
+    if(!altura) altura = 1;
+    if(!peso) peso = 1;
+    
     await Typedb();
         if(!name) return res.status(404).send("Necesita Tener un nobmre");
         if(name){
             const createpkm = await Pokemon.create({
                 name: name.toLowerCase(),
-                vida,ataque,defensa,velocidad,altura,peso,img, createInDb:true})
+                vida,ataque,defensa,velocidad,altura,peso,imagen,createInDb:true})
             const createTypes = await Type.findAll({
                 where: { name: tipos }
             })
@@ -113,32 +121,5 @@ router.post(`/pokemons`,async (req,res)=>{
             res.send('Pokemon Creado')
         }
 })
-
-router.put("/:id", async (req, res) => {
-    try {
-      let { id } = req.params;
-      let { name, vida, ataque, defensa, velocidad, peso, altura} = req.body;
-      await Pokemon.update(
-        {  name, vida, ataque, defensa, velocidad, peso, altura },
-        { where: { id: id } }
-      );
-      res.send("Actualizado");
-    } catch (e) {
-      res.status(404).json({ msg: `${e} /catch put` });
-    }
-  });
-
-
-  router.delete("/:id", async (req, res) => {
-    try {
-      let { id } = req.params;
-      await Pokemon.destroy({
-        where: { id },
-      });
-      res.send("Eliminado");
-    } catch (e) {
-      res.status(400).send({ msg: `${e} /delete` });
-    }
-  });
 
 module.exports = router

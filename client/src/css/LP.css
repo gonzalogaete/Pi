@@ -37,9 +37,8 @@
 div.main{ 
   background-image: url('../img/ash.gif');
   background-position: center;
-  background-size: 35%;
+  background-size: 80%;
   background-repeat: no-repeat;
-  background-color: rgb(250, 242, 213);
   height: 100vh;
   margin: 0px;
   padding: 0px;
@@ -48,12 +47,3 @@ div.main{
 .botonPrincipal{ 
   padding: 0px;
 }
-
-/* body{
-  background-color: #fdf8b7;
-  opacity: 1;
-  background-image:  linear-gradient(135deg, #363636 25%, transparent 25%), linear-gradient(225deg, #363636 25%, transparent 25%), linear-gradient(45deg, #636363 25%, transparent 25%), linear-gradient(315deg, #363636 25%, #fff894 25%);
-  background-position:  40px 0, 40px 0, 0 0, 0 0;
-  background-size: 80px 80px;
-  background-repeat: repeat;
-  } */
