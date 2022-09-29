@@ -3,7 +3,6 @@ import '../css/cards.css';
 
 export default function card({name,imagee,tipos,ataque}){
     return(
-        
         <div className="card">
             <h3 className="cardName">{name}</h3>
             <img className='cardImg'src={imagee} alt='not found' width="300px" height='250px'/>

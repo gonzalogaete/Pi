@@ -42,6 +42,7 @@ ul.paginado li a.active {
 
 .link{
     text-decoration: none;
+    color: black;
 }
 
 .tipos{

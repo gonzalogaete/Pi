@@ -14,22 +14,30 @@ export default function Detail (props){
     
     return(
         <div className="mainD">
+            <h1 className="detailh1">{myPokemon.name}</h1>
             {
-                <div>
-                    <h1>{myPokemon.name}</h1>
-                    <img src={myPokemon.img? myPokemon.img : myPokemon.imagen} alt="imagen" width='500px' height='500px'></img>
-                    <h4>Tipos: {!myPokemon.createInDb? myPokemon.tipos + ' ' : myPokemon.Types.map(e => e.name + (' '))}</h4>
-                    <h4>Vida: {myPokemon.vida}</h4>
-                    <h4>Ataque: {myPokemon.ataque}</h4>
-                    <h4>Defensa: {myPokemon.defensa}</h4>
-                    <h4>Velocidad: {myPokemon.velocidad}</h4>
-                    <h4>Altura: {myPokemon.altura / 10} Metros</h4>
-                    <h4>Peso: {myPokemon.peso} Kilogramos</h4>
+                <div className="Detailmain">
+                    
+                    <div className="positionIMG">
+                        <img className='detailImg'src={myPokemon.img? myPokemon.img : myPokemon.imagen} alt="imagen" width='500px' height='500px'></img>
+                    
+                    <h4 className="detailTipos">Tipos: {!myPokemon.createInDb? myPokemon.tipos + ' ' : myPokemon.Types.map(e => e.name + (' '))}</h4>
+                    </div>
+
+                    <h4 className="detailh4">Vida: {myPokemon.vida}</h4>
+                    <h4 className="detailh4">Ataque: {myPokemon.ataque}</h4>
+                    <h4 className="detailh4">Defensa: {myPokemon.defensa}</h4>
+                    <h4 className="detailh4">Velocidad: {myPokemon.velocidad}</h4>
+                    <h4 className="detailh4">Altura: {myPokemon.altura/100} Metros</h4>
+                    <h4 className="detailh4">Peso: {myPokemon.peso} Kilogramos</h4>
                 </div>
             } 
-            <Link to ='/home'>
-                <button>Volver</button>
-            </Link>
+            <div className="detailVolver">
+                <Link  className='aDetail' to ='/home'>
+                    <button className="buttonVolverd">Volver</button>
+                </Link>
+            </div>
+            
         </div>
     )
 }

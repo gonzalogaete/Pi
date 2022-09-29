@@ -149,9 +149,9 @@ export  default function PokeCreate(){
             }
         }
         
-        if(input.altura > 151){
+        if(input.altura > 1501){
             errors.altura ='La altura no puede ser mayor a 15 metros'
-        }else if(input.altura < 1){
+        }else if(input.altura < 0){
             errors.altura ='La altura no puede ser menor a 0.1 metros'
         }else if(true){
             for(let a = 0; a < input.altura.length; a++){
@@ -263,7 +263,7 @@ export  default function PokeCreate(){
                 </div>
                 <div className="formName">
                     <div>
-                        <label className="primeraForm">altura: </label>
+                        <label className="primeraForm">altura (en centimetros '100 cm  = 1 m'): </label>
                     </div>
                     <input
                     className="inputForm"
@@ -316,7 +316,6 @@ export  default function PokeCreate(){
                         input.tipos.map((e, i) => {
                             return (
                                     <li className="tiposLi" key={i} onClick={() => handleDeleteTipos(e)}> {e} X </li>
-                                
                             );
                         })
                     }
