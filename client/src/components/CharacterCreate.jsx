@@ -263,7 +263,7 @@ export  default function PokeCreate(){
                 </div>
                 <div className="formName">
                     <div>
-                        <label className="primeraForm">altura (en centimetros '100 cm  = 1 m'): </label>
+                        <label className="primeraForm">altura: </label>
                     </div>
                     <input
                     className="inputForm"

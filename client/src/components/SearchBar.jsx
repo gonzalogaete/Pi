@@ -8,8 +8,8 @@ import  imagen from '../img/favicon.gif';
 import imagen2 from '../img/lupa.png';
 
 export default function SearchBar (){
-    const dispatch = useDispatch()
-    const [name,setName] = useState('')
+    const dispatch = useDispatch();
+    const [name,setName] = useState('');
 
     function InputChange(e){
         e.preventDefault()
@@ -19,7 +19,8 @@ export default function SearchBar (){
         e.preventDefault()
         dispatch(searchBarPokemon(name))
     }
-
+     
+    
     return(
         <div className="header">
             <div className="pokeimagen">

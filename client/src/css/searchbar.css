@@ -71,4 +71,5 @@ body {
   .btnAa{
     background-color: transparent;
     border: 0px;
+    cursor: pointer;
   }

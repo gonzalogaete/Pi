@@ -58,19 +58,20 @@ export function filtradoTipo(payload){
         })
     }
 }
+
 export function searchBarPokemon(payload){
-    try{
         return async function (dispatch){
         var json = await axios.get('http://localhost:3001/pokemons?name='+ payload)
+        
+        if(typeof(json.data) == 'string'){
+           return alert('No Se Encontro el Pokémon')
+        }
+
         return dispatch({
             type: "GET_SEARCHBAR",
             payload: json.data
         })
         }
-    }
-    catch (error){
-        console.log(error)
-    }
 }
 
 export function getDetail(id){
@@ -85,5 +86,18 @@ export function getDetail(id){
             return error;
         }
 
+    }
+}
+
+export function KillPkm(id){
+    return async function(dispatch){
+        try{
+            var json = await axios.delete("http://localhost:3001/pokemons/" + id)
+            return dispatch({
+                type: 'KILL'
+            })
+        }catch(error){
+            return error;
+        }
     }
 }

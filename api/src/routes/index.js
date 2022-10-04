@@ -4,7 +4,7 @@ const axios = require ('axios');
 const { Pokemon, Type } = require('../db.js');
 
 const getApiInfo = async () =>{
-    const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=59`);
+    const apiUrl = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=13`);
     let urls = apiUrl.data.results.map(current => current.url )
     let pkm = [];
     for(let i=0 ; i<urls.length ; i++){
@@ -75,9 +75,9 @@ router.get(`/pokemons`, async (req,res)=> {
         if(pokeName.length){
             return res.status(200).send(pokeName)
         }else{
-            return res.status(404).send('No se encontro el pokemon')
+            return res.status(200).send('No se encontro el pokemon')
         } 
-    } 
+    }
     return res.status(200).send(total) 
 })
 
@@ -109,7 +109,7 @@ router.post(`/pokemons`,async (req,res)=>{
     if(!peso) peso = 1;
     
     await Typedb();
-        if(!name) return res.status(404).send("Necesita Tener un nobmre");
+        if(!name) return res.status(404).send("Necesita Tener un nombre");
         if(name){
             const createpkm = await Pokemon.create({
                 name: name.toLowerCase(),
@@ -120,6 +120,32 @@ router.post(`/pokemons`,async (req,res)=>{
             createpkm.addTypes(createTypes);
             res.send('Pokemon Creado')
         }
+})
+
+router.put(`/pokemons/:id`,(req,res) => {
+    let{name,vida,ataque,defensa,velocidad,altura,peso,imagen,tipos} = req.body;
+    const {id} = req.params;
+    Pokemon.update(
+        {name, vida, ataque, defensa, velocidad, altura, peso, imagen, tipos},
+        { where :{ id } }
+    ).then( res  =>{
+        res.send('Pokemon Modificado')
+    }).catch(error => {
+        res.send('Pokemon No Modificado' + error)
+        }
+    )
+})
+
+router.delete(`/pokemons/:id`,(req,res)=>{
+    const {id} = req.params;
+    Pokemon.destroy(
+        {where : {id}}
+    ).then(res => {
+        res.send('Pokemon Eliminado')
+    }).catch(error => {
+        res.send('Pokemon No Eliminado' + error)
+        }
+    )
 })
 
 module.exports = router

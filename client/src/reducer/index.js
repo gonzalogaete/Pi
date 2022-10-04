@@ -81,6 +81,9 @@ function rootReducer (state= initialState, action) {
                 ...state,
                 details: action.payload
             }
+
+        case 'Kill':
+            return {...state}
         default: return state;
     }
 }
