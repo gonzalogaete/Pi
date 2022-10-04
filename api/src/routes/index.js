@@ -128,7 +128,7 @@ router.put(`/pokemons/:id`,(req,res) => {
     Pokemon.update(
         {name, vida, ataque, defensa, velocidad, altura, peso, imagen, tipos},
         { where :{ id } }
-    ).then( res  =>{
+    ).then( e  =>{
         res.send('Pokemon Modificado')
     }).catch(error => {
         res.send('Pokemon No Modificado' + error)

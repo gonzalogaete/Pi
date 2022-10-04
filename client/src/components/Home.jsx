@@ -44,9 +44,11 @@ export default function Home(){
 
     function filtrados(event){
         dispatch(filtrado(event.target.value));
+        setCurrentPage(1);
     }
     function filtradoTipos(event){
         dispatch(filtradoTipo(event.target.value));
+        setCurrentPage(1);
     }
 
     return (

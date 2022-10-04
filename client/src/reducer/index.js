@@ -27,12 +27,28 @@ function rootReducer (state= initialState, action) {
         
         case 'FILTRADO_TYPE':
             const filterpkm = state.allpokemons
-            const filtrado = action.payload === 'all' ? 
-            state.allpokemons : filterpkm.filter(e => e.tipos ? e.tipos.includes(action.payload) : e.Types.map(e => e.name.includes(action.payload))) 
-            
+            const filtrado = [];
+
+            for(let i =0 ; i<filterpkm.length; i++){
+
+                if(filterpkm[i].tipos !== undefined){
+                    for(let nocreados = 0; nocreados < filterpkm[i].tipos.length; nocreados++ ){
+                        if(filterpkm[i].tipos[nocreados] === action.payload){
+                            filtrado.push(filterpkm[i])
+                        }
+                    }
+                }else{
+                    console.log('filterpkm[i]:   ' + filterpkm[i].name)
+                    for(let creados = 0 ; creados < filterpkm[i].Types.length; creados++){
+                        if(filterpkm[i].Types[creados].name === action.payload){
+                            filtrado.push(filterpkm[i])
+                        }
+                    }
+                }
+            }
             return{
                 ...state,
-                pokemones: filtrado
+                pokemones: action.payload === 'all' ? state.allpokemons : filtrado
             }
 
         case 'ORDER_NAME':
