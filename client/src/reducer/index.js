@@ -38,7 +38,6 @@ function rootReducer (state= initialState, action) {
                         }
                     }
                 }else{
-                    console.log('filterpkm[i]:   ' + filterpkm[i].name)
                     for(let creados = 0 ; creados < filterpkm[i].Types.length; creados++){
                         if(filterpkm[i].Types[creados].name === action.payload){
                             filtrado.push(filterpkm[i])
