@@ -3,26 +3,30 @@ import { Link , useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, KillPkm } from "../actions/index";
 import detailsc from '../css/detailsc.css';
-
+import Loader from "./loader.jsx";
 
 export default function Detail (props){
     const dispatch = useDispatch()
     const history = useHistory();
+    const loading = useSelector((state) => state.Loader);
+    const [isLoading, setIsLoading] = useState(false); 
+    const myPokemon = useSelector((state)=> state.details)
 
     useEffect(()=> {
         dispatch(getDetail(props.match.params.id))
     },[dispatch])
-    const myPokemon = useSelector((state)=> state.details)
-
+    
     const kill =(e) => {
         e.preventDefault();
         dispatch(KillPkm(props.match.params.id))
         alert('Pokemon Borrado')
         history.push("/home");
     }
-    
     return(
         <div className="mainD">
+            {
+                loading && <Loader/>
+            }
             <h1 className="detailh1">{myPokemon.name}</h1>
             {
                 <div className="Detailmain">
@@ -42,17 +46,19 @@ export default function Detail (props){
                 </div>
             }
             
-            <div className="detailVolver">
-                <Link  className='aDetail' to ='/home'>
-                    <button className="buttonVolverd">Volver</button>
-                </Link>
-            </div>
+            <div className="ContenedoresButtons">
+                <div className="detailVolver">
+                    <Link  className='aDetail' to ='/home'>
+                        <button className="buttonVolverd">Volver</button>
+                    </Link>
+                </div>
 
-            { myPokemon.createInDb ? <div className="KillButtton">
-                <button onClick={e => kill(e)}>Borrar Pokémon</button>               
-            </div> : null 
+            { myPokemon.createInDb ? 
+                <div className="KillButtton">
+                    <button className="borrarButton" onClick={e => kill(e)}>Borrar Pokémon</button>               
+                </div> : null 
             }
-
+            </div>
         </div>
     )
 }

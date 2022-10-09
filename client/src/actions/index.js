@@ -1,8 +1,11 @@
 import axios from "axios";
 
+
 export function getpokemones(){
     return async function(dispatch){
+        dispatch(IsLoading(true))
         var json = await axios('http://localhost:3001/pokemons');
+        dispatch(IsLoading(false))
         return dispatch({
             type: "GET_POKEMONES",
             payload: json.data
@@ -77,7 +80,9 @@ export function searchBarPokemon(payload){
 export function getDetail(id){
     return async function(dispatch){
         try{
+            dispatch(IsLoading(true))
             var json = await axios("http://localhost:3001/pokemons/" + id)
+            dispatch(IsLoading(false))
             return dispatch ({
                 type:'GET_DETAILS',
                 payload: json.data
@@ -99,5 +104,14 @@ export function KillPkm(id){
         }catch(error){
             return error;
         }
+    }
+}
+
+export function IsLoading (payload){
+    return async function (dispatch){
+        return dispatch({
+            type: 'Loading',
+            payload: payload
+        })
     }
 }

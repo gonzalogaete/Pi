@@ -40,7 +40,6 @@
 
 .detailVolver{
     display: inline-block;
-    
 }
 
 .aDetail{
@@ -48,9 +47,9 @@
 }
 
 .buttonVolverd{
-    background-color: rgba(255, 0, 0, 0.39);
-    width: 100px;
-    height: 100px;
+    background-color: rgba(121, 255, 73, 0.39);
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s;
@@ -58,6 +57,33 @@
     font-family: cursive;
 }
 .buttonVolverd:hover{
+    background-color: rgba(218, 255, 215, 0.39);
+    transform: scale(1.2);
+}
+
+.KillButtton{
+    display: inline-block;
+}
+
+.ContenedoresButtons{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 20px;
+}
+
+.borrarButton{
+    background-color: rgba(255, 0, 0, 0.39);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 25px;
+    font-family: cursive;
+
+}
+.borrarButton:hover{
     background-color: rgba(244, 135, 135, 0.39);
     transform: scale(1.2);
 }

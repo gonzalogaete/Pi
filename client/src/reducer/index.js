@@ -2,7 +2,8 @@ const initialState = {
     pokemones: [],
     allpokemons: [],
     tipos:[],
-    details:[]
+    details:[],
+    Loader: false
 } 
 function rootReducer (state= initialState, action) {
     switch(action.type){
@@ -51,7 +52,7 @@ function rootReducer (state= initialState, action) {
             }
 
         case 'ORDER_NAME':
-            let order = action.payload === 'asc'? 
+            let order = action.payload === 'AZ'? 
             state.pokemones.sort(function(a,b){
                 if(a.name > b.name) return 1
                 if(b.name > a.name ) return -1
@@ -99,6 +100,13 @@ function rootReducer (state= initialState, action) {
 
         case 'Kill':
             return {...state}
+        
+        case 'Loading':
+            return {
+                ...state,
+                Loader: action.payload
+            }
+        
         default: return state;
     }
 }

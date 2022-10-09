@@ -49,3 +49,94 @@ ul.paginado li a.active {
     background-image: url('../img/planta.png');
 }
 
+.selectors{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Ordername{
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid black;
+    font-size: 18px;
+    border-radius: 50% 50% 0% 0%;
+    width: 30%;
+    height: 50px;
+}
+.Orderatq{
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid black;
+    font-size: 18px;
+    border-radius: 50% 50% 0% 0%;
+    width: 45%;
+    height: 50px;
+}
+
+.filterCreated{
+    margin: 20px;
+}
+
+.filterCreated{
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid black;
+    font-size: 18px;
+    border-radius: 50% 50% 0% 0%;
+    width: 30%;
+    height: 50px;
+}
+
+.filterType{
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid black;
+    font-size: 18px;
+    border-radius: 50% 50% 0% 0%;
+    width: 30%;
+    height: 50px;
+}
+
+.textOrdenamiento{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.textFiltrado{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-1 {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #000000;
+  background-image: linear-gradient(45deg, #ffc42f 0%, #f0cc19  51%, #ffd22f  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-1:active {
+  transform: scale(0.75);
+}
+.linkbutton-1{
+    text-decoration: none;
+}
