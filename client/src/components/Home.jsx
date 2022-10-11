@@ -53,6 +53,8 @@ export default function Home(){
         dispatch(filtradoTipo(event.target.value));
         setCurrentPage(1);
     }
+    
+
     return (
         <div className="mainso">
             {
@@ -67,31 +69,31 @@ export default function Home(){
             <div className="selectors">
                 <div className="Ordenamientos">
                     <p className="textOrdenamiento">Ordenamientos</p>
-                <select className='Ordername'onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
+                <select id='orderName' className='Ordername'onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
                     <optgroup label="Por Nombre: ">
-                        <option value='AZ'>A - Z</option>
+                        <option id='AZ' value='AZ'>A - Z</option>
                         <option value='ZA'>Z - A</option>
                     </optgroup>
                 </select>
-                <select className='Orderatq' onChange={e => {OrderAtaq(e)}}> {/* orden por ataque*/}
+                <select id="orderATQ" className='Orderatq' onChange={e => {OrderAtaq(e)}}> {/* orden por ataque*/}
                     <optgroup label="Ordenamiento: por Ataque">
-                        <option value='ascATQ'>Ascendente</option>  
+                        <option id='ascATQ' value='ascATQ'>Ascendente</option>  
                         <option value='descATQ'>Descendente</option>
                     </optgroup>
                 </select>
                 </div>
                 <div className="Filtrados">
                     <p className="textFiltrado">Filtrados</p>
-                <select className='filterCreated' onChange={e => {filtrados(e)}}> {/* Filtrado! por creado y no creado */}
+                <select id='filtradoCreado' className='filterCreated' onChange={e => {filtrados(e)}}> {/* Filtrado! por creado y no creado */}
                     <optgroup label="Filtrado: Pokemon creado y no creado">
-                        <option value='all'>Todos</option>
+                        <option id='all' value='all'>Todos</option>
                         <option value='creado'>Creado</option>
                         <option value='nocreado'>No Creado</option>
                     </optgroup>
                 </select>
-                <select className='filterType'onChange={e => {filtradoTipos(e)}}> {/* Filtrado! por tipo */}
+                <select id='filtradoTipo'className='filterType'onChange={e => {filtradoTipos(e)}}> {/* Filtrado! por tipo */}
                     <optgroup label="Filtrado: tipos de pokemon">
-                        <option value='all'>Todos</option>
+                        <option id='all' value='all'>Todos</option>
                             {currentTipo?.map((c,i) =>{
                                 return(
                                 <option key={i} value={c.name}> {c.name}
@@ -99,6 +101,8 @@ export default function Home(){
                                 )
                             })}
                     </optgroup>
+
+                
                 </select>
                 </div>
                 

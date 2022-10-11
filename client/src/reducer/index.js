@@ -19,6 +19,7 @@ function rootReducer (state= initialState, action) {
                 tipos: action.payload,
             }
         case 'FILTRADO':
+            document.getElementById('filtradoTipo').value = 'all'
             const allPkm = state.allpokemons
             const statusFiltrado = action.payload === 'creado'? allPkm.filter(el => el.createInDb === true) : allPkm.filter(el => el.createInDb === false )
             return{
@@ -29,6 +30,7 @@ function rootReducer (state= initialState, action) {
         case 'FILTRADO_TYPE':
             const filterpkm = state.allpokemons
             const filtrado = [];
+            document.getElementById('filtradoCreado').value = 'all'
 
             for(let i =0 ; i<filterpkm.length; i++){
 
@@ -52,7 +54,8 @@ function rootReducer (state= initialState, action) {
             }
 
         case 'ORDER_NAME':
-            let order = action.payload === 'AZ'? 
+            document.getElementById('orderATQ').value = 'ascATQ'
+            let order = action.payload === 'AZ'?
             state.pokemones.sort(function(a,b){
                 if(a.name > b.name) return 1
                 if(b.name > a.name ) return -1
@@ -69,6 +72,7 @@ function rootReducer (state= initialState, action) {
             }
 
         case 'ORDER_ATAQ':
+            document.getElementById('orderName').value = 'AZ'
             let orderat = action.payload === 'ascATQ'? 
             state.pokemones.sort(function(a,b){
                 if(a.ataque > b.ataque) return 1
