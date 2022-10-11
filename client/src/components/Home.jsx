@@ -54,7 +54,6 @@ export default function Home(){
         setCurrentPage(1);
     }
     
-
     return (
         <div className="mainso">
             {
@@ -70,13 +69,13 @@ export default function Home(){
                 <div className="Ordenamientos">
                     <p className="textOrdenamiento">Ordenamientos</p>
                 <select id='orderName' className='Ordername'onChange={e => {OrderName(e)}}> {/*orden alfabetico A-Z // Z-A */}
-                    <optgroup label="Por Nombre: ">
+                    <optgroup label="Por Nombre">
                         <option id='AZ' value='AZ'>A - Z</option>
                         <option value='ZA'>Z - A</option>
                     </optgroup>
                 </select>
                 <select id="orderATQ" className='Orderatq' onChange={e => {OrderAtaq(e)}}> {/* orden por ataque*/}
-                    <optgroup label="Ordenamiento: por Ataque">
+                    <optgroup label="Por Ataque">
                         <option id='ascATQ' value='ascATQ'>Ascendente</option>  
                         <option value='descATQ'>Descendente</option>
                     </optgroup>
@@ -85,14 +84,14 @@ export default function Home(){
                 <div className="Filtrados">
                     <p className="textFiltrado">Filtrados</p>
                 <select id='filtradoCreado' className='filterCreated' onChange={e => {filtrados(e)}}> {/* Filtrado! por creado y no creado */}
-                    <optgroup label="Filtrado: Pokemon creado y no creado">
+                    <optgroup label="Pokemon creado o no creado en la pagina">
                         <option id='all' value='all'>Todos</option>
                         <option value='creado'>Creado</option>
                         <option value='nocreado'>No Creado</option>
                     </optgroup>
                 </select>
                 <select id='filtradoTipo'className='filterType'onChange={e => {filtradoTipos(e)}}> {/* Filtrado! por tipo */}
-                    <optgroup label="Filtrado: tipos de pokemon">
+                    <optgroup label="Tipos de pokemon">
                         <option id='all' value='all'>Todos</option>
                             {currentTipo?.map((c,i) =>{
                                 return(
@@ -100,9 +99,7 @@ export default function Home(){
                                 </option>
                                 )
                             })}
-                    </optgroup>
-
-                
+                    </optgroup>                
                 </select>
                 </div>
                 

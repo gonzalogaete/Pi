@@ -34,7 +34,7 @@ export default function SearchBar (){
                 <input type='text' placeholder="Buscar Pokemon" onChange={(e)=> InputChange(e)}/>
                 <div className='btn'>
                     <button className='btnAa' type="submit" onClick={e => Submit(e)}>
-                        <img src={imagen2} width='60px' height='60px'></img>
+                        <img src={imagen2} width='60px' height='60px'></img> 
                     </button>
                 </div>
             </div>

@@ -92,7 +92,7 @@ router.get(`/pokemons/:id`, async (req,res)=>{
     const pokeid = await pkmid(id);
 
     if(pokeid == 0){
-        return res.status(404).send('No Existe este Pokemon')
+        return res.status(200).send('No Existe este Pokemon')
     }else{
         return res.status(201).send(pokeid)
     }
