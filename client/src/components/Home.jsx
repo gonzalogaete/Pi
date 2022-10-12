@@ -27,8 +27,10 @@ export default function Home(){
     }
 
     useEffect((e)=>{
-        dispatch(getpokemones())
-        dispatch(getTipos())
+        if(allPokemones<1){
+            dispatch(getpokemones())
+            dispatch(getTipos())
+        }
     },[])
 
     function OrderName(event){
@@ -53,6 +55,9 @@ export default function Home(){
         dispatch(filtradoTipo(event.target.value));
         setCurrentPage(1);
     }
+    function refresh(e){
+        dispatch(getpokemones())
+    }
     
     return (
         <div className="mainso">
@@ -64,6 +69,9 @@ export default function Home(){
             <Link className="linkbutton-1" to='/pokemones'>
                 <button className="button-1" role="button">Crear Pokémon</button>
             </Link> 
+            <div className="PosicionamientoRefresh">
+                <button className="buttonRefresh" role='button' onClick={e=> refresh(e)}>Recargar Pokemones</button>
+            </div>
             <div className="selectors">
                 <div className="Ordenamientos">
                     <p className="textOrdenamiento">Ordenamientos</p>

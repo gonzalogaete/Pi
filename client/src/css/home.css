@@ -115,13 +115,13 @@ ul.paginado li a.active {
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   display: block;
   border: 0px;
   font-weight: 700;
   box-shadow: 0px 0px 14px -7px #000000;
-  background-image: linear-gradient(45deg, #ffc42f 0%, #f0cc19  51%, #ffd22f  100%);
+  background-image: linear-gradient(45deg, #ffc42f 0%, #f0cc19  51%, #ffffff  100%);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -139,4 +139,40 @@ ul.paginado li a.active {
 }
 .linkbutton-1{
     text-decoration: none;
+}
+
+.buttonRefresh{
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #000000;
+  background-image: linear-gradient(45deg, #f4de52 0%, #f6ebeb  51%, #000000  100%);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonRefresh:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+  
+.buttonRefresh:active {
+    transform: scale(0.75);
+}
+
+.PosicionamientoRefresh{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
