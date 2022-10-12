@@ -54,6 +54,15 @@ export  default function PokeCreate(){
         if(acum > 2){
             return alert('Solo 2 tipos por pokemon')
         }
+        // if(tipos.length == 0){
+        //     tipos[0] = e
+        // }else{
+        //     for(let i =0 ; tipos.length; i++){
+        //         if(e === tipos[i]){
+        //             return alert('Este tipo ya existe en el pokemon')
+        //         }
+        //     }
+        // }
         
         setInput({
           ...input,
@@ -81,6 +90,7 @@ export  default function PokeCreate(){
 
       const handleDeleteTipos = (e) => {
         setacum(acum-2)
+
         setInput({
           ...input,
           tipos: input.tipos.filter((tipos) => tipos !== e),
@@ -90,7 +100,6 @@ export  default function PokeCreate(){
       function validateInput(input){
         let errors={};
 
-        
         if(!input.name){
             errors.name='Se Requiere un Nombre para el Pokemon'
         }else if(true){

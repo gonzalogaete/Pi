@@ -61,7 +61,6 @@ export default function Home(){
             }
             <SearchBar className='searchbar'></SearchBar>
             <h1 className='titulo'>PokéApiMon</h1>
-            
             <Link className="linkbutton-1" to='/pokemones'>
                 <button className="button-1" role="button">Crear Pokémon</button>
             </Link> 
