@@ -4,7 +4,7 @@ import axios from "axios";
 export function getpokemones(){
     return async function(dispatch){
         dispatch(IsLoading(true))
-        var json = await axios('http://localhost:3001/pokemons');
+        var json = await axios('/pokemons');
         dispatch(IsLoading(false))
         return dispatch({
             type: "GET_POKEMONES",
@@ -14,7 +14,7 @@ export function getpokemones(){
 }
 export function getTipos (){
     return async function(dispatch){
-        var json = await axios('http://localhost:3001/types');
+        var json = await axios('/types');
         return dispatch({
             type: 'GET_TIPOS',
             payload: json.data
@@ -24,7 +24,7 @@ export function getTipos (){
 
 export function PostPokemon(payload){
     return async function (dispatch){
-        const respons = await axios.post("http://localhost:3001/pokemons",payload)
+        const respons = await axios.post("/pokemons",payload)
         return respons
     }
 }
@@ -64,7 +64,7 @@ export function filtradoTipo(payload){
 
 export function searchBarPokemon(payload){
         return async function (dispatch){
-        var json = await axios.get('http://localhost:3001/pokemons?name='+ payload)
+        var json = await axios.get('/pokemons?name='+ payload)
         
         if(typeof(json.data) == 'string'){
            return alert('No Se Encontro el Pokémon')
@@ -81,7 +81,7 @@ export function getDetail(id){
     return async function(dispatch){
         try{
             dispatch(IsLoading(true))
-            var json = await axios("http://localhost:3001/pokemons/" + id)
+            var json = await axios("/pokemons/" + id)
             dispatch(IsLoading(false))
             return dispatch ({
                 type:'GET_DETAILS',
@@ -97,7 +97,7 @@ export function getDetail(id){
 export function KillPkm(id){
     return async function(dispatch){
         try{
-            var json = await axios.delete("http://localhost:3001/pokemons/" + id)
+            var json = await axios.delete("/pokemons/" + id)
             return dispatch({
                 type: 'KILL'
             })
