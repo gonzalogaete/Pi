@@ -54,21 +54,19 @@ export  default function PokeCreate(){
         if(acum > 2){
             return alert('Solo 2 tipos por pokemon')
         }
-        // if(tipos.length == 0){
-        //     tipos[0] = e
-        // }else{
-        //     for(let i =0 ; tipos.length; i++){
-        //         if(e === tipos[i]){
-        //             return alert('Este tipo ya existe en el pokemon')
-        //         }
-        //     }
-        // }
+        let repetidos = 0;
         
-        setInput({
-          ...input,
-          tipos: [...input.tipos, e.target.value],
-        });
-      };
+        if(input.tipos.includes(e.target.value)){
+           repetidos=1;
+        }
+        
+        if(repetidos === 0){
+            setInput({
+              ...input,
+              tipos: [...input.tipos, e.target.value],
+            });
+          };
+        }
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -60,7 +60,7 @@ export function filtradoTipo(payload){
             payload
         })
     }
-}
+} 
 
 export function searchBarPokemon(payload){
         return async function (dispatch){
